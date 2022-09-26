@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='App'>
+      <h1>to-do list</h1>
+
+      <div>
+        <form action="">
+          <h2>Adicione uma nova tarefa</h2>
+
+          <div>
+            <label htmlFor="description">Descrição</label>
+            <input type="text" name="description" placeholder='Informe uma descrição' />
+          </div>
+
+          <button type="submit">Adicionar</button>
+        </form>
+
+        <section>
+          <h2>Afazeres</h2>
+
+          <ul>
+            <li>
+              <input type="checkbox" name="todo1" id="" />
+              <label htmlFor="todo1">Lorem ipsum sit amet</label>
+            </li>
+
+            <li>
+              <input type="checkbox" name="todo2" id="" />
+              <label htmlFor="todo2">Lorem ipsum sit amet</label>
+            </li>
+
+            <li>
+              <input type="checkbox" name="todo3" id="" />
+              <label htmlFor="todo3">Lorem ipsum sit amet</label>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
   );
 }
 
