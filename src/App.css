@@ -1,38 +1,128 @@
 .App {
-  text-align: center;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 2rem;
+  margin: auto;
+
+  height: min(100%, 100vh);
+  width: min(100%, 100rem);
+
+  background: #ffffff;
+
+  margin: 5rem auto;
+
+  border: none;
+  border-radius: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1 {
+  padding: 0 0 2rem;
+
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App form {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  
+  width: 100%;
+
+  padding: 2rem;
+
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+}
+
+.App form div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+}
+
+.App form div label {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.App form div input {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+}
+
+.App form button {
+  display: inline-block;
+  cursor: pointer;
+
+  padding: 0.5rem;
+  width: min(100%, 20rem);
+
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 1.4rem;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.5;
+
+  background: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 0.5rem;
+
+  transition: all 0.25s
+}
+
+.App form button:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.App section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  width: 100%;
+  
+  padding: 2rem;
+}
+
+.App div {
+  display: flex;
+  flex-direction: row;
+
+  gap: 5rem;
+}
+
+.App section ul {
+  list-style: none;
+}
+
+.App section ul li {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.5rem;
+
+  padding: 1rem 0;
+  transition: all 1s;
 }
 
-.App-link {
-  color: #61dafb;
+.App section li label {
+  font-size: 1.4rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App section li input:checked + label {
+  text-decoration: line-through;
 }

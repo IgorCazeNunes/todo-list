@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local(''),
+        url('./fonts/SF-Pro-Display-Regular.OTF') format('truetype');
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local(''),
+        url('./fonts/SF-Pro-Display-Medium.OTF') format('truetype');
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local(''),
+        url('./fonts/SF-Pro-Display-Bold.OTF') format('truetype');
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: #f2f2f2;
+    color: #17171b;
+    -webkit-font-smoothing: antialiased;
+}
+
+body,
+input,
+button {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+button {
+    cursor: pointer;
+}

@@ -6,12 +6,12 @@ const App = () => {
       <h1>to-do list</h1>
 
       <div>
-        <form action="">
+        <form>
           <h2>Adicione uma nova tarefa</h2>
 
           <div>
             <label htmlFor="description">Descrição</label>
-            <input type="text" name="description" placeholder='Informe uma descrição' />
+            <input type="text" name="description" placeholder='Informe uma descrição'/>
           </div>
 
           <button type="submit">Adicionar</button>
