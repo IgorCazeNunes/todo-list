@@ -4,13 +4,14 @@ import './App.css';
 
 const App = () => {
   const [inputDescription, setInputDescription] = useState("");
+  const [todoList, setTodoList] = useState<String[]>([]);
 
   const handleChange = (event: any) => {
     setInputDescription(event.target.value);
   }
 
   const handleSubmit = (event: React.FormEvent) => {
-    alert('A name was submitted: ' + inputDescription);
+    setTodoList(previousState => [...previousState, inputDescription]);
     setInputDescription("");
     event.preventDefault();
   }
@@ -35,20 +36,19 @@ const App = () => {
           <h2>Afazeres</h2>
 
           <ul>
-            <li>
-              <input type="checkbox" name="todo1" id="" />
-              <label htmlFor="todo1">Lorem ipsum sit amet</label>
-            </li>
-
-            <li>
-              <input type="checkbox" name="todo2" id="" />
-              <label htmlFor="todo2">Lorem ipsum sit amet</label>
-            </li>
-
-            <li>
-              <input type="checkbox" name="todo3" id="" />
-              <label htmlFor="todo3">Lorem ipsum sit amet</label>
-            </li>
+            {!todoList.length ? (
+              <li>
+                Nenhuma Atividade Registrada!
+              </li>
+            ) : (
+              todoList.map((todo, index) => (
+                <li>
+                  <input type="checkbox" name={`${todo}-${index}`} />
+                  <label htmlFor={`${todo}-index`}>{todo}</label>
+                </li>
+                
+              ))
+            )}
           </ul>
         </section>
       </div>

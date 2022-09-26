@@ -35,8 +35,9 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  
+
   width: 100%;
+  height: min(100%, 50rem);
 
   padding: 2rem;
 
@@ -114,13 +115,19 @@
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-
+  
   padding: 1rem 0;
+
+  color: #ff1616;
+  font-weight: bold;
+  font-size: 1.4rem;
+  
   transition: all 1s;
 }
 
 .App section li label {
-  font-size: 1.4rem;
+  color: #000;
+  font-weight: 400;
 }
 
 .App section li input:checked + label {
