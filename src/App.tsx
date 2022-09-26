@@ -1,17 +1,31 @@
+import React, { useState } from 'react';
+
 import './App.css';
 
 const App = () => {
+  const [inputDescription, setInputDescription] = useState("");
+
+  const handleChange = (event: any) => {
+    setInputDescription(event.target.value);
+  }
+
+  const handleSubmit = (event: React.FormEvent) => {
+    alert('A name was submitted: ' + inputDescription);
+    setInputDescription("");
+    event.preventDefault();
+  }
+
   return (
     <main className='App'>
       <h1>to-do list</h1>
 
       <div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h2>Adicione uma nova tarefa</h2>
 
           <div>
             <label htmlFor="description">Descrição</label>
-            <input type="text" name="description" placeholder='Informe uma descrição'/>
+            <input type="text" name="description" placeholder='Informe uma descrição' value={inputDescription} onChange={handleChange} />
           </div>
 
           <button type="submit">Adicionar</button>
