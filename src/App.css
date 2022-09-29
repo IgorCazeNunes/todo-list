@@ -27,7 +27,7 @@
 }
 
 .App h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
@@ -72,7 +72,7 @@
   font-size: 1.2rem;
 }
 
-.App form button {
+.App button {
   display: inline-block;
   cursor: pointer;
 
@@ -93,9 +93,31 @@
   transition: all 0.25s
 }
 
-.App form button:hover {
+.App button:hover {
   background-color: #0069d9;
   border-color: #0062cc;
+}
+
+.App button.btn-delete {
+  width: min(100%, 20rem);
+
+  color: #ffffff;
+  font-size: 1.2rem;
+
+  background: #ff1616;
+  border: 1px solid #ff1616;
+}
+
+.App button.btn-delete:hover {
+  background-color: #de0b0b;
+  border-color: #de0b0b;
+}
+
+.App div {
+  display: flex;
+  flex-direction: row;
+
+  gap: 5rem;
 }
 
 .App section {
@@ -108,11 +130,12 @@
   padding: 2rem;
 }
 
-.App div {
+.App section div {
   display: flex;
   flex-direction: row;
-
-  gap: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
 .App section ul {

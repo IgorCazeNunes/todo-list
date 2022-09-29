@@ -31,6 +31,12 @@ const App = () => {
     setTodoList(updatedTodoList);
   }
 
+  const handleDeleteAllCheckedTodos = (event: any) => {
+    event.preventDefault();
+    const updatedTodoList = todoList.filter(todo => !todo.checked);
+    setTodoList(updatedTodoList);
+  }
+
   const handleValidation = () => {
     if (!inputDescription) {
       setError(`O campo nāo pode estar vazio.`);
@@ -82,7 +88,17 @@ const App = () => {
         </form>
 
         <section>
-          <h2>Afazeres</h2>
+          <div>
+            <h2>Afazeres</h2>
+
+            <button 
+              type="button" 
+              className="btn-delete"
+              onClick={(event) => handleDeleteAllCheckedTodos(event)}
+            >
+              Deletar Items Finalizados
+            </button>
+          </div>
 
           <ul>
             {!todoList.length ? (
