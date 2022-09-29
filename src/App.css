@@ -150,11 +150,14 @@
   
   padding: 1rem 0;
 
-  color: #ff1616;
+  color: #000000;
   font-weight: bold;
   font-size: 1.4rem;
   
   transition: all 1s;
+}
+.App section ul li.warning {
+  color: #ff1616;
 }
 
 .App section li label {

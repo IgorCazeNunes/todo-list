@@ -1,4 +1,4 @@
-  import React, { useState } from 'react';
+  import React, { useEffect, useState } from 'react';
 
 import './App.css';
 
@@ -8,6 +8,7 @@ interface ITodo {
 }
 
 const App = () => {
+  const [totalItems, setTotalItems] = useState(0);
   const [error, setError] = useState<string>("");
   const [inputDescription, setInputDescription] = useState<string>("");
   const [todoList, setTodoList] = useState<ITodo[]>(() => JSON.parse(localStorage.getItem(`@Todo-List`) || "[]"));
@@ -70,6 +71,10 @@ const App = () => {
     setError("");
   }
 
+  useEffect(() => {
+    setTotalItems(todoList.length);
+  }, [todoList]);
+
   return (
     <main className='App'>
       <h1>to-do list</h1>
@@ -108,7 +113,7 @@ const App = () => {
 
           <ul>
             {!todoList.length ? (
-              <li>
+              <li className="warning">
                 Nenhuma Atividade Registrada!
               </li>
             ) : (
@@ -125,6 +130,10 @@ const App = () => {
                 </li>
               ))
             )}
+
+            <li>
+              Total de items: {totalItems}
+            </li>
           </ul>
         </section>
       </div>
