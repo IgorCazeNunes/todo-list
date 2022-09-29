@@ -10,10 +10,14 @@ interface ITodo {
 const App = () => {
   const [error, setError] = useState<string>("");
   const [inputDescription, setInputDescription] = useState<string>("");
-  const [todoList, setTodoList] = useState<ITodo[]>([]);
+  const [todoList, setTodoList] = useState<ITodo[]>(() => JSON.parse(localStorage.getItem(`@Todo-List`) || "[]"));
 
   const handleChange = (event: any) => {
     setInputDescription(event.target.value);
+  }
+
+  const handleSaveLocalStorage = (todoList: ITodo[]) => {
+    localStorage.setItem(`@Todo-List`, JSON.stringify(todoList));
   }
 
   const handleCheck = (changedIndex: number) => {
@@ -34,6 +38,7 @@ const App = () => {
   const handleDeleteAllCheckedTodos = (event: any) => {
     event.preventDefault();
     const updatedTodoList = todoList.filter(todo => !todo.checked);
+    handleSaveLocalStorage(updatedTodoList);
     setTodoList(updatedTodoList);
   }
 
@@ -53,12 +58,13 @@ const App = () => {
       return;
     }
 
-    const newTodo: ITodo = {
+    const updatedTodoList = [...todoList, {
       description: inputDescription,
       checked: false
-    }
+    }];
 
-    setTodoList(previousState => [...previousState, newTodo]);
+    handleSaveLocalStorage(updatedTodoList);
+    setTodoList(updatedTodoList);
 
     setInputDescription("");
     setError("");
@@ -117,7 +123,6 @@ const App = () => {
                   />
                   <label htmlFor={`${todo.description}-${index}`}>{todo.description}</label>
                 </li>
-                
               ))
             )}
           </ul>
