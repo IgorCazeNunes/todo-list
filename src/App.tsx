@@ -107,14 +107,15 @@ const App = () => {
               </li>
             ) : (
               todoList.map((todo, index) => (
-                <li>
+                <li key={`${todo.description}-${index}`}>
                   <input 
+                    readOnly
                     type="checkbox" 
                     name={`${todo.description}-${index}`} 
                     checked={todo.checked} 
                     onClick={() => handleCheck(index)} 
                   />
-                  <label htmlFor={`${todo}-index`}>{todo.description}</label>
+                  <label htmlFor={`${todo.description}-${index}`}>{todo.description}</label>
                 </li>
                 
               ))
