@@ -63,6 +63,15 @@
   border: 1px solid #ced4da;
 }
 
+.App form div input:focus {
+  border: 1px solid #007bff;
+}
+
+.App form div input+span {
+  color: #ff1616;
+  font-size: 1.2rem;
+}
+
 .App form button {
   display: inline-block;
   cursor: pointer;

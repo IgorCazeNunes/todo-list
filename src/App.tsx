@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+  import React, { useState } from 'react';
 
 import './App.css';
 
 const App = () => {
+  const [error, setError] = useState<String>("");
   const [inputDescription, setInputDescription] = useState("");
   const [todoList, setTodoList] = useState<String[]>([]);
 
@@ -10,10 +11,25 @@ const App = () => {
     setInputDescription(event.target.value);
   }
 
+  const handleValidation = () => {
+    if (!inputDescription) {
+      setError(`O campo nāo pode estar vazio.`);
+      return false;
+    }
+
+    return true
+  }
+
   const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (!handleValidation()) {
+      return;
+    }
+
     setTodoList(previousState => [...previousState, inputDescription]);
     setInputDescription("");
-    event.preventDefault();
+    setError("");
   }
 
   return (
@@ -26,7 +42,14 @@ const App = () => {
 
           <div>
             <label htmlFor="description">Descrição</label>
-            <input type="text" name="description" placeholder='Informe uma descrição' value={inputDescription} onChange={handleChange} />
+            <input 
+              type="text" 
+              name="description" 
+              placeholder='Informe uma descrição' 
+              value={inputDescription} 
+              onChange={handleChange} 
+            />
+            {error && (<span>{error}</span>)}
           </div>
 
           <button type="submit">Adicionar</button>
