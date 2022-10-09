@@ -4,7 +4,7 @@
     font-weight: 400;
     font-display: swap;
     src: local(''),
-        url('./fonts/SF-Pro-Display-Regular.OTF') format('truetype');
+        url('./assets/fonts/SF-Pro-Display-Regular.OTF') format('truetype');
     /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 
@@ -14,7 +14,7 @@
     font-weight: 500;
     font-display: swap;
     src: local(''),
-        url('./fonts/SF-Pro-Display-Medium.OTF') format('truetype');
+        url('./assets/fonts/SF-Pro-Display-Medium.OTF') format('truetype');
     /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 
@@ -24,7 +24,7 @@
     font-weight: 700;
     font-display: swap;
     src: local(''),
-        url('./fonts/SF-Pro-Display-Bold.OTF') format('truetype');
+        url('./assets/fonts/SF-Pro-Display-Bold.OTF') format('truetype');
     /* Chrome 26+, Opera 23+, Firefox 39+ */
 }
 
