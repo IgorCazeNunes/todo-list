@@ -1,6 +1,7 @@
   import React, { useEffect, useState } from 'react';
 
 import './App.css';
+import Form from './components/Form';
 
 interface ITodo {
   description: string;
@@ -11,13 +12,6 @@ const App = () => {
   const [todoList, setTodoList] = useState<ITodo[]>(() => JSON.parse(localStorage.getItem(`@Todo-List`) || "[]"));
   const [totalItems, setTotalItems] = useState(0);
   
-  const [inputDescription, setInputDescription] = useState<string>("");
-  const [formError, setFormError] = useState<string>("");
-
-  const onInputChange = (event: any) => {
-    setInputDescription(event.target.value);
-  }
-
   const handleSaveLocal = (todoList: ITodo[]) => {
     localStorage.setItem(`@Todo-List`, JSON.stringify(todoList));
   }
@@ -40,40 +34,12 @@ const App = () => {
   const handleDeleteAllCheckedTodos = (event: any) => {
     event.preventDefault();
     const updatedTodoList = todoList.filter(todo => !todo.checked);
-    handleSaveLocal(updatedTodoList);
     setTodoList(updatedTodoList);
-  }
-
-  const isFormValid = () => {
-    if (!inputDescription) {
-      setFormError(`O campo nāo pode estar vazio.`);
-      return false;
-    }
-
-    return true
-  }
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    if (!isFormValid()) {
-      return;
-    }
-
-    const updatedTodoList = [...todoList, {
-      description: inputDescription,
-      checked: false
-    }];
-
-    handleSaveLocal(updatedTodoList);
-    setTodoList(updatedTodoList);
-
-    setInputDescription("");
-    setFormError("");
   }
 
   useEffect(() => {
     setTotalItems(todoList.length);
+    handleSaveLocal(todoList);
   }, [todoList]);
 
   return (
@@ -81,23 +47,7 @@ const App = () => {
       <h1>to-do list</h1>
 
       <div>
-        <form onSubmit={handleSubmit}>
-          <h2>Adicione uma nova tarefa</h2>
-
-          <div>
-            <label htmlFor="description">Descrição</label>
-            <input 
-              type="text" 
-              name="description" 
-              placeholder='Informe uma descrição' 
-              value={inputDescription} 
-              onChange={onInputChange} 
-            />
-            {formError && (<span>{formError}</span>)}
-          </div>
-
-          <button type="submit">Adicionar</button>
-        </form>
+        <Form todoList={todoList} setTodoList={setTodoList} />
 
         <section>
           <div>
