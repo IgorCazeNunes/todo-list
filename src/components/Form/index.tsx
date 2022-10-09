@@ -47,6 +47,7 @@ const Form = ({ todoList, setTodoList }: IForm) => {
                 <label htmlFor="description">Descrição</label>
                 <input
                     type="text"
+                    id="description"
                     name="description"
                     placeholder='Informe uma descrição'
                     value={inputDescription}

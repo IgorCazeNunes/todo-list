@@ -49,6 +49,7 @@ const TodoList = ({ todoList, setTodoList, totalItems }: ITodoList) => {
                             <input
                                 readOnly
                                 type="checkbox"
+                                id={`${todo.description}-${index}`}
                                 name={`${todo.description}-${index}`}
                                 checked={todo.checked}
                                 onClick={() => handleCheck(index)}
