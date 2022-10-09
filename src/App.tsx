@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { ITodo } from './common/interfaces';
 import { Form, TodoList } from './components';
+import { Header } from './layouts';
 
 import './App.css';
 
@@ -20,7 +21,7 @@ const App = () => {
 
 	return (
 		<main className='App'>
-			<h1>to-do list</h1>
+			<Header />
 
 			<div>
 				<Form todoList={todoList} setTodoList={setTodoList} />
