@@ -1,16 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+import { IForm } from '../../common/interfaces';
 
 import './index.css';
-
-interface ITodo {
-    description: string;
-    checked: boolean;
-}
-
-interface IForm {
-    todoList: ITodo[];
-    setTodoList: (todoList: ITodo[]) => void;
-}
 
 const Form = ({ todoList, setTodoList }: IForm) => {
     const [inputDescription, setInputDescription] = useState<string>("");

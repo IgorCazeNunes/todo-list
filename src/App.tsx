@@ -1,12 +1,8 @@
-  import React, { useEffect, useState } from 'react';
+  import { useEffect, useState } from 'react';
 
 import './App.css';
+import { ITodo } from './common/interfaces';
 import Form from './components/Form';
-
-interface ITodo {
-  description: string;
-  checked: boolean;
-}
 
 const App = () => {
   const [todoList, setTodoList] = useState<ITodo[]>(() => JSON.parse(localStorage.getItem(`@Todo-List`) || "[]"));
