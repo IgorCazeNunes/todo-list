@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { ITodo } from '../../common/interfaces';
 import { Form, TodoList } from '../../components';
-import { Header } from '../../layouts';
 import { localLoad, localSave } from '../../util/localStorage';
 
 import './index.css';
@@ -23,15 +22,11 @@ const Home = () => {
 	}, [todoList]);
 
 	return (
-		<main className='App'>
-			<Header />
+		<div>
+			<Form todoList={todoList} setTodoList={setTodoList} />
 
-			<div>
-				<Form todoList={todoList} setTodoList={setTodoList} />
-
-				<TodoList todoList={todoList} setTodoList={setTodoList} totalItems={totalItems} />
-			</div>
-		</main>
+			<TodoList todoList={todoList} setTodoList={setTodoList} totalItems={totalItems} />
+		</div>
 	);
 }
 
