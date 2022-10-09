@@ -3,15 +3,18 @@ import { useEffect, useState } from 'react';
 import { ITodo } from '../../common/interfaces';
 import { Form, TodoList } from '../../components';
 import { Header } from '../../layouts';
+import { localLoad, localSave } from '../../util/localStorage';
 
 import './index.css';
 
+const TODO_LOCAL_STORAGE = "Todo-List"
+
 const Home = () => {
-	const [todoList, setTodoList] = useState<ITodo[]>(() => JSON.parse(localStorage.getItem(`@Todo-List`) || "[]"));
+	const [todoList, setTodoList] = useState<ITodo[]>(localLoad(TODO_LOCAL_STORAGE) || "[]");
 	const [totalItems, setTotalItems] = useState(0);
 
 	const handleSaveLocal = (todoList: ITodo[]) => {
-		localStorage.setItem(`@Todo-List`, JSON.stringify(todoList));
+		localSave(TODO_LOCAL_STORAGE, todoList);
 	}
 
 	useEffect(() => {
