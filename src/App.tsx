@@ -1,36 +1,16 @@
-  import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import { ITodo } from './common/interfaces';
+import { Form, TodoList } from './components';
 
 import './App.css';
-import { ITodo } from './common/interfaces';
-import Form from './components/Form';
 
 const App = () => {
   const [todoList, setTodoList] = useState<ITodo[]>(() => JSON.parse(localStorage.getItem(`@Todo-List`) || "[]"));
   const [totalItems, setTotalItems] = useState(0);
-  
+
   const handleSaveLocal = (todoList: ITodo[]) => {
     localStorage.setItem(`@Todo-List`, JSON.stringify(todoList));
-  }
-
-  const handleCheck = (changedIndex: number) => {
-    const updatedTodoList = todoList.map((todo, index) => {
-      if (changedIndex === index) {
-        return {
-          ...todo,
-          checked: !todo.checked
-        }
-      }
-
-      return todo;
-    });
-
-    setTodoList(updatedTodoList);
-  }
-
-  const handleDeleteAllCheckedTodos = (event: any) => {
-    event.preventDefault();
-    const updatedTodoList = todoList.filter(todo => !todo.checked);
-    setTodoList(updatedTodoList);
   }
 
   useEffect(() => {
@@ -45,44 +25,7 @@ const App = () => {
       <div>
         <Form todoList={todoList} setTodoList={setTodoList} />
 
-        <section>
-          <div>
-            <h2>Afazeres</h2>
-
-            <button 
-              type="button" 
-              className="btn-delete"
-              onClick={(event) => handleDeleteAllCheckedTodos(event)}
-            >
-              Deletar Items Finalizados
-            </button>
-          </div>
-
-          <ul>
-            {!todoList.length ? (
-              <li className="warning">
-                Nenhuma Atividade Registrada!
-              </li>
-            ) : (
-              todoList.map((todo, index) => (
-                <li key={`${todo.description}-${index}`}>
-                  <input 
-                    readOnly
-                    type="checkbox" 
-                    name={`${todo.description}-${index}`} 
-                    checked={todo.checked} 
-                    onClick={() => handleCheck(index)} 
-                  />
-                  <label htmlFor={`${todo.description}-${index}`}>{todo.description}</label>
-                </li>
-              ))
-            )}
-
-            <li>
-              Total de items: {totalItems}
-            </li>
-          </ul>
-        </section>
+        <TodoList todoList={todoList} setTodoList={setTodoList} totalItems={totalItems} />
       </div>
     </main>
   );
