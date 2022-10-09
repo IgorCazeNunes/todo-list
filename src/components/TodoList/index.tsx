@@ -3,6 +3,8 @@ import { ITodoList } from '../../common/interfaces';
 import './styles.css';
 
 const TodoList = ({ todoList, setTodoList, totalItems }: ITodoList) => {
+    const hasChecked = todoList.some(todo => todo.checked === true);
+
     const handleCheck = (changedIndex: number) => {
         const updatedTodoList = todoList.map((todo, index) => {
             if (changedIndex === index) {
@@ -29,13 +31,15 @@ const TodoList = ({ todoList, setTodoList, totalItems }: ITodoList) => {
             <div>
                 <h2>Afazeres</h2>
 
-                <button
-                    type="button"
-                    className="btn-delete"
-                    onClick={(event) => handleDeleteAllCheckedTodos(event)}
-                >
-                    Deletar Items Finalizados
-                </button>
+                {hasChecked && (
+                    <button
+                        type="button"
+                        className="btn-delete"
+                        onClick={(event) => handleDeleteAllCheckedTodos(event)}
+                    >
+                        Deletar Items Finalizados
+                    </button>
+                )}
             </div>
 
             <ul>
