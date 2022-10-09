@@ -1,6 +1,6 @@
 import { ITodoList } from '../../common/interfaces';
 
-import './index.css';
+import './styles.css';
 
 const TodoList = ({ todoList, setTodoList, totalItems }: ITodoList) => {
     const handleCheck = (changedIndex: number) => {

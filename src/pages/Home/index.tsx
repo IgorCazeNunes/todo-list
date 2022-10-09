@@ -4,7 +4,7 @@ import { ITodo } from '../../common/interfaces';
 import { Form, TodoList } from '../../components';
 import { localLoad, localSave } from '../../util/localStorage';
 
-import './index.css';
+import './styles.css';
 
 const TODO_LOCAL_STORAGE = "Todo-List"
 

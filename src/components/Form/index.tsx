@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { IForm } from '../../common/interfaces';
 
-import './index.css';
+import './styles.css';
 
 const Form = ({ todoList, setTodoList }: IForm) => {
     const [inputDescription, setInputDescription] = useState<string>("");
