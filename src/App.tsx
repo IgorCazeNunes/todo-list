@@ -8,16 +8,17 @@ interface ITodo {
 }
 
 const App = () => {
-  const [totalItems, setTotalItems] = useState(0);
-  const [error, setError] = useState<string>("");
-  const [inputDescription, setInputDescription] = useState<string>("");
   const [todoList, setTodoList] = useState<ITodo[]>(() => JSON.parse(localStorage.getItem(`@Todo-List`) || "[]"));
+  const [totalItems, setTotalItems] = useState(0);
+  
+  const [inputDescription, setInputDescription] = useState<string>("");
+  const [formError, setFormError] = useState<string>("");
 
-  const handleChange = (event: any) => {
+  const onInputChange = (event: any) => {
     setInputDescription(event.target.value);
   }
 
-  const handleSaveLocalStorage = (todoList: ITodo[]) => {
+  const handleSaveLocal = (todoList: ITodo[]) => {
     localStorage.setItem(`@Todo-List`, JSON.stringify(todoList));
   }
 
@@ -39,13 +40,13 @@ const App = () => {
   const handleDeleteAllCheckedTodos = (event: any) => {
     event.preventDefault();
     const updatedTodoList = todoList.filter(todo => !todo.checked);
-    handleSaveLocalStorage(updatedTodoList);
+    handleSaveLocal(updatedTodoList);
     setTodoList(updatedTodoList);
   }
 
-  const handleValidation = () => {
+  const isFormValid = () => {
     if (!inputDescription) {
-      setError(`O campo nāo pode estar vazio.`);
+      setFormError(`O campo nāo pode estar vazio.`);
       return false;
     }
 
@@ -55,7 +56,7 @@ const App = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!handleValidation()) {
+    if (!isFormValid()) {
       return;
     }
 
@@ -64,11 +65,11 @@ const App = () => {
       checked: false
     }];
 
-    handleSaveLocalStorage(updatedTodoList);
+    handleSaveLocal(updatedTodoList);
     setTodoList(updatedTodoList);
 
     setInputDescription("");
-    setError("");
+    setFormError("");
   }
 
   useEffect(() => {
@@ -90,9 +91,9 @@ const App = () => {
               name="description" 
               placeholder='Informe uma descrição' 
               value={inputDescription} 
-              onChange={handleChange} 
+              onChange={onInputChange} 
             />
-            {error && (<span>{error}</span>)}
+            {formError && (<span>{formError}</span>)}
           </div>
 
           <button type="submit">Adicionar</button>
