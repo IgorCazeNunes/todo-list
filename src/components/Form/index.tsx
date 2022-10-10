@@ -4,7 +4,7 @@ import { IForm } from '../../common/interfaces';
 
 import './styles.css';
 
-const Form = ({ todoList, setTodoList }: IForm) => {
+const Form = ({ setTodoList }: IForm) => {
     const [inputDescription, setInputDescription] = useState<string>("");
     const [formError, setFormError] = useState<string>("");
 
@@ -28,12 +28,10 @@ const Form = ({ todoList, setTodoList }: IForm) => {
             return;
         }
 
-        const updatedTodoList = [...todoList, {
+        setTodoList(previous => [...previous, {
             description: inputDescription,
             checked: false
-        }];
-
-        setTodoList(updatedTodoList);
+        }]);
 
         setInputDescription("");
         setFormError("");

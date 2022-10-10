@@ -23,7 +23,7 @@ const Home = () => {
 
 	return (
 		<div>
-			<Form todoList={todoList} setTodoList={setTodoList} />
+			<Form setTodoList={setTodoList} />
 
 			<TodoList todoList={todoList} setTodoList={setTodoList} totalItems={totalItems} />
 		</div>
