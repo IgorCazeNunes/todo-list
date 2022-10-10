@@ -11,6 +11,6 @@ export interface IForm {
 
 export interface ITodoList {
     todoList: ITodo[];
-    setTodoList: (todoList: ITodo[]) => void;
+    setTodoList: React.Dispatch<React.SetStateAction<ITodo[]>>;
     totalItems: number;
 }
