@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { IForm } from '../../common/interfaces';
 
@@ -8,7 +8,7 @@ const Form = ({ setTodoList }: IForm) => {
     const [inputDescription, setInputDescription] = useState<string>("");
     const [formError, setFormError] = useState<string>("");
 
-    const onInputChange = (event: any) => {
+    const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputDescription(event.target.value);
     }
 

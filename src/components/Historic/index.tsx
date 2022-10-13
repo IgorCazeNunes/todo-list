@@ -1,10 +1,11 @@
+import { MouseEvent } from 'react';
 import { IHistoric } from '../../common/interfaces';
 
 import './styles.css';
 
 const Historic = ({ historicList, setHistoricList }: IHistoric) => {
 
-    const handleCleanHistoric = (event: any) => {
+    const handleCleanHistoric = (event: MouseEvent) => {
         event.preventDefault();
         setHistoricList([]);
     }
@@ -18,7 +19,7 @@ const Historic = ({ historicList, setHistoricList }: IHistoric) => {
                     <button
                         type="button"
                         className="btn-delete"
-                        onClick={(event) => handleCleanHistoric(event)}
+                        onClick={handleCleanHistoric}
                     >
                         Limpar Histórico
                     </button>

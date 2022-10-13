@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react';
 import { ITodoList } from '../../common/interfaces';
 
 import './styles.css';
@@ -25,7 +26,7 @@ const TodoList = ({
         setTodoList(updatedTodoList);
     }
 
-    const handleDeleteAllCheckedTodos = (event: any) => {
+    const handleDeleteAllCheckedTodos = (event: MouseEvent) => {
         event.preventDefault();
         const updatedTodoList = todoList.filter(todo => !todo.checked);
         const deletedTodos = todoList.filter(todo => todo.checked).map(todo => todo.description);
@@ -42,7 +43,7 @@ const TodoList = ({
                     <button
                         type="button"
                         className="btn-delete"
-                        onClick={(event) => handleDeleteAllCheckedTodos(event)}
+                        onClick={handleDeleteAllCheckedTodos}
                     >
                         Deletar Items Finalizados
                     </button>
