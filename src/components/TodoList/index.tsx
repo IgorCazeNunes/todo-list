@@ -2,7 +2,12 @@ import { ITodoList } from '../../common/interfaces';
 
 import './styles.css';
 
-const TodoList = ({ todoList, setTodoList, totalItems }: ITodoList) => {
+const TodoList = ({ 
+    todoList, 
+    setTodoList,
+    setHistoricList, 
+    totalItems 
+}: ITodoList) => {
     const hasChecked = todoList.some(todo => todo.checked === true);
 
     const handleCheck = (changedIndex: number) => {
@@ -23,6 +28,8 @@ const TodoList = ({ todoList, setTodoList, totalItems }: ITodoList) => {
     const handleDeleteAllCheckedTodos = (event: any) => {
         event.preventDefault();
         const updatedTodoList = todoList.filter(todo => !todo.checked);
+        const deletedTodos = todoList.filter(todo => todo.checked).map(todo => todo.description);
+        setHistoricList(previous => [...previous, ...deletedTodos]);
         setTodoList(updatedTodoList);
     }
 
