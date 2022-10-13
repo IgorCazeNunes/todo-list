@@ -7,19 +7,20 @@ import { localLoad, localSave } from '../../util/localStorage';
 import './styles.css';
 
 const TODO_LOCAL_STORAGE = "Todo-List"
+const HISTORIC_LOCAL_STORAGE = "Todo-Historic";
 
 const Home = () => {
-	const [historicList, setHistoricList] = useState<string[]>([])
-	const [todoList, setTodoList] = useState<ITodo[]>(localLoad(TODO_LOCAL_STORAGE) || "[]");
+	const [historicList, setHistoricList] = useState<string[]>(localLoad(HISTORIC_LOCAL_STORAGE) || [])
+	const [todoList, setTodoList] = useState<ITodo[]>(localLoad(TODO_LOCAL_STORAGE) || []);
 	const [totalItems, setTotalItems] = useState(0);
 
-	const handleSaveLocal = (todoList: ITodo[]) => {
-		localSave(TODO_LOCAL_STORAGE, todoList);
-	}
+	useEffect(() => {
+		localSave(HISTORIC_LOCAL_STORAGE, historicList);
+	}, [historicList])
 
 	useEffect(() => {
 		setTotalItems(todoList.length);
-		handleSaveLocal(todoList);
+		localSave(TODO_LOCAL_STORAGE, todoList);
 	}, [todoList]);
 
 	return (
