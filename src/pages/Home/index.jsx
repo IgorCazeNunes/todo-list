@@ -1,41 +1,17 @@
-import { useEffect, useState } from 'react';
-
 import { Form, Historic, TodoList } from '../../components';
-import { localLoad, localSave } from '../../util/localStorage';
 
 import './styles.css';
 
-const TODO_LOCAL_STORAGE = "Todo-List"
-const HISTORIC_LOCAL_STORAGE = "Todo-Historic";
-
 const Home = () => {
-	const [historicList, setHistoricList] = useState(localLoad(HISTORIC_LOCAL_STORAGE) || [])
-	const [todoList, setTodoList] = useState(localLoad(TODO_LOCAL_STORAGE) || []);
-	const [totalItems, setTotalItems] = useState(0);
-
-	useEffect(() => {
-		localSave(HISTORIC_LOCAL_STORAGE, historicList);
-	}, [historicList])
-
-	useEffect(() => {
-		setTotalItems(todoList.length);
-		localSave(TODO_LOCAL_STORAGE, todoList);
-	}, [todoList]);
-
 	return (
 		<div>
 			<div className="container">
-				<Form setTodoList={setTodoList} />
+				<Form />
 
-				<Historic historicList={historicList} setHistoricList={setHistoricList} />
+				<Historic />
 			</div>
 
-			<TodoList 
-				todoList={todoList} 
-				setTodoList={setTodoList} 
-				setHistoricList={setHistoricList}
-				totalItems={totalItems} 
-			/>
+			<TodoList />
 		</div>
 	);
 }

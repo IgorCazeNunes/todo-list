@@ -1,40 +1,32 @@
 import './styles.css';
 
-const Historic = ({ historicList, setHistoricList }) => {
-    const handleCleanHistoric = (event) => {
-        event.preventDefault();
-        setHistoricList([]);
-    }
-
+const Historic = () => {
     return (
         <section className="historic">
             <div>
                 <h2>Histórico</h2>
 
-                {historicList.length ?
-                    <button
-                        type="button"
-                        className="btn-delete"
-                        onClick={handleCleanHistoric}
-                    >
-                        Limpar Histórico
-                    </button>
-                    : null
-                }
+                <button
+                    type="button"
+                    className="btn-delete"
+                    onClick={(event) => event.preventDefault()}
+                >
+                    Limpar Histórico
+                </button>
             </div>
 
             <ul>
-                {!historicList.length ? (
-                    <li className="warning">
-                        Nenhuma atividade no histórico!
-                    </li>
-                ) : (
-                    historicList.map((todo, index) => (
-                        <li key={`${todo}-${index}`}>
-                            {todo}
-                        </li>
-                    ))
-                )}
+                <li>
+                    Todo-1
+                </li>
+
+                <li>
+                    Todo-2
+                </li>
+
+                <li>
+                    Todo-3
+                </li>
             </ul>
         </section>
     );
