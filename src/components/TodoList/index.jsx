@@ -1,6 +1,3 @@
-import { MouseEvent } from 'react';
-import { ITodoList } from '../../common/interfaces';
-
 import './styles.css';
 
 const TodoList = ({ 
@@ -8,10 +5,10 @@ const TodoList = ({
     setTodoList,
     setHistoricList, 
     totalItems 
-}: ITodoList) => {
+}) => {
     const hasChecked = todoList.some(todo => todo.checked === true);
 
-    const handleCheck = (changedIndex: number) => {
+    const handleCheck = (changedIndex) => {
         const updatedTodoList = todoList.map((todo, index) => {
             if (changedIndex === index) {
                 return {
@@ -26,7 +23,7 @@ const TodoList = ({
         setTodoList(updatedTodoList);
     }
 
-    const handleDeleteAllCheckedTodos = (event: MouseEvent) => {
+    const handleDeleteAllCheckedTodos = (event) => {
         event.preventDefault();
         const updatedTodoList = todoList.filter(todo => !todo.checked);
         const deletedTodos = todoList.filter(todo => todo.checked).map(todo => todo.description);

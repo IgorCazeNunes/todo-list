@@ -1,14 +1,12 @@
-import { ChangeEvent, useState } from 'react';
-
-import { IForm } from '../../common/interfaces';
+import { useState } from 'react';
 
 import './styles.css';
 
-const Form = ({ setTodoList }: IForm) => {
-    const [inputDescription, setInputDescription] = useState<string>("");
-    const [formError, setFormError] = useState<string>("");
+const Form = ({ setTodoList }) => {
+    const [inputDescription, setInputDescription] = useState("");
+    const [formError, setFormError] = useState("");
 
-    const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const onInputChange = (event) => {
         setInputDescription(event.target.value);
     }
 
@@ -21,7 +19,7 @@ const Form = ({ setTodoList }: IForm) => {
         return true
     }
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         if (!isFormValid()) {

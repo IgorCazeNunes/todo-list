@@ -1,4 +1,4 @@
-const localLoad = (key: string) => {
+const localLoad = (key) => {
     const json = localStorage.getItem(`@${key}`);
 
     if (!json) return;
@@ -6,7 +6,7 @@ const localLoad = (key: string) => {
     return JSON.parse(json);
 }
 
-const localSave = (key: string, data: any) => {
+const localSave = (key, data) => {
     localStorage.setItem(`@${key}`, JSON.stringify(data));
 }
 

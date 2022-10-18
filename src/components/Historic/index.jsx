@@ -1,11 +1,7 @@
-import { MouseEvent } from 'react';
-import { IHistoric } from '../../common/interfaces';
-
 import './styles.css';
 
-const Historic = ({ historicList, setHistoricList }: IHistoric) => {
-
-    const handleCleanHistoric = (event: MouseEvent) => {
+const Historic = ({ historicList, setHistoricList }) => {
+    const handleCleanHistoric = (event) => {
         event.preventDefault();
         setHistoricList([]);
     }

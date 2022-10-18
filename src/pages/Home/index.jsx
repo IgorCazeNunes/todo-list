@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { ITodo } from '../../common/interfaces';
 import { Form, Historic, TodoList } from '../../components';
 import { localLoad, localSave } from '../../util/localStorage';
 
@@ -10,8 +9,8 @@ const TODO_LOCAL_STORAGE = "Todo-List"
 const HISTORIC_LOCAL_STORAGE = "Todo-Historic";
 
 const Home = () => {
-	const [historicList, setHistoricList] = useState<string[]>(localLoad(HISTORIC_LOCAL_STORAGE) || [])
-	const [todoList, setTodoList] = useState<ITodo[]>(localLoad(TODO_LOCAL_STORAGE) || []);
+	const [historicList, setHistoricList] = useState(localLoad(HISTORIC_LOCAL_STORAGE) || [])
+	const [todoList, setTodoList] = useState(localLoad(TODO_LOCAL_STORAGE) || []);
 	const [totalItems, setTotalItems] = useState(0);
 
 	useEffect(() => {
