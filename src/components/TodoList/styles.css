@@ -1,0 +1,48 @@
+section.todo-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	width: 100%;
+}
+
+section.todo-list div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+	height: 3rem;
+}
+
+section.todo-list ul {
+	list-style: none;
+}
+
+section.todo-list ul li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+
+	padding: 1rem 0;
+
+	color: #000000;
+	font-weight: bold;
+	font-size: 1.4rem;
+
+	transition: all 1s;
+}
+
+section.todo-list ul li.warning {
+	color: #ff1616;
+}
+
+section.todo-list li label {
+	color: #000;
+	font-weight: 400;
+}
+
+section.todo-list li input:checked+label {
+	text-decoration: line-through;
+}
