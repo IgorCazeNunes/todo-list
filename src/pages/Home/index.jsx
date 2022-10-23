@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Form from '../../components/Form';
 import Historic from '../../components/Historic';
-import TodoList from '../../components/TodoList'
+import TodoList from '../../components/TodoList';
+
+import { TODO_LOCAL_STORAGE } from '../../common/constants';
+import { localLoad, localSave } from '../../util/localStorage';
 
 const Home = () => {
-    const [todoList, setTodoList] = useState(["Todo 1", "Todo 2", "Todo 3"]);
+    const [todoList, setTodoList] = useState(localLoad(TODO_LOCAL_STORAGE) || []);
+
+    useEffect(() => {
+        localSave(TODO_LOCAL_STORAGE, todoList);
+    }, [todoList]);
 
     return (
         <div>
@@ -17,7 +24,7 @@ const Home = () => {
                 <Historic />
             </div>
 
-            <TodoList todoList={todoList} />
+            <TodoList todoList={todoList} setTodoList={setTodoList} />
         </div>
     );
 }

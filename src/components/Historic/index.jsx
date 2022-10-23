@@ -1,5 +1,13 @@
 import './styles.css';
 
+
+/**
+ * @TODO
+ * - Criar state para controlar o Historico na página Home
+ * - Passar state para o Historic
+ * - Renderizar lista utilizando state
+ * - Criar função de deleta
+ */
 const Historic = () => (
     <section className="historic">
         <div>
